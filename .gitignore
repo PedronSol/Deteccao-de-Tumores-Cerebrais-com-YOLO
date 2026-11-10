@@ -60,7 +60,6 @@ datasets/raw/
 datasets/processed/
 data/.zip
 data/.tar.gz
-*.png
 *.jpg
 *.jpeg
 
