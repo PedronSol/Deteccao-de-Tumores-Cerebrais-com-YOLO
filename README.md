@@ -9,19 +9,19 @@ Projeto de Visão Computacional voltado à automação da identificação e loca
 O diagnóstico precoce de tumores cerebrais exige precisão e agilidade. Este projeto aplica redes neurais convolucionais profundas baseadas em YOLO para realizar **detecção de objetos (bounding boxes)** e **classificação multiclasse** em fatias de exames de RM, permitindo localizar rapidamente a região afetada e reduzir potenciais falsos negativos em triagens clínicas.
 
 ### Classes Detectadas:
-- `Glioma`
-- `Meningioma`
-- `Pituitário (Pituitary)`
+- `Glioma - Label 0`
+- `Meningioma - Label 1`
+- `Pituitário (Pituitary) - Label 2`
 - `Sem Tumor (No Tumor)`
 
-## 🛠️ Arquitetura e Tecnologias
+## Arquitetura e Tecnologias
 
-- **Framework de Deep Learning:** PyTorch & Ultralytics YOLO (v8 / v11)
+- **Framework de Deep Learning:** PyTorch & Ultralytics YOLO (v8)
 - **Processamento de Imagem:** OpenCV, Albumentations (data augmentation)
 - **Visualização & Análise de Métricas:** Matplotlib, Seaborn, Pandas
-- **Estrutura de Dados:** Dataset anotado no formato padrão YOLO (`data.yaml`)
+- **Estrutura de Dados:** Dataset anotado no formato padrão YOLO
 
-## 📊 Pipeline de Treinamento e Avaliação
+## Pipeline de Treinamento e Avaliação
 
 ### 1. Pré-processamento e Augmentation
 - Normalização do contraste e redimensionamento das imagens de RM ($640 \times 640$).
@@ -32,7 +32,7 @@ Na detecção médica, a escolha do limiar de confiança ($\text{conf\_thres}$) 
 - **Alta Sensibilidade (Recall Elevado):** Redução do $\text{conf\_thres}$ para capturar lesões sutis ou em estágios iniciais, minimizando falsos negativos.
 - **Supressão de Não-Máximos (NMS):** Ajuste do IoU threshold ($\text{iou\_thres}$) para evitar caixa duplas sobre o mesmo tumor.
 
-## 📈 Resultados e Métricas
+## Resultados e Métricas
 
 | Métrica | Valor Obtido |
 | :--- | :--- |
@@ -43,10 +43,20 @@ Na detecção médica, a escolha do limiar de confiança ($\text{conf\_thres}$) 
 
 *(Adicione aqui a imagem da Matriz de Confusão e da Curva PR geradas pelo YOLO no diretório `runs/detect/train/`)*
 
-## 🚀 Como Executar
+## Como Executar
 
-### 1. Clonar e Instalar Dependências
+### 1. Inicializar Ambiente Virtual
+```bash
+python3 -m venv .venv
+
+source venv/bin/activate # No Windows: venv\Scripts\activate
+```
+
+### 2. Clonar e Instalar Dependências
 ```bash
 git clone [https://github.com/seu-usuario/brain-tumor-detection-yolo.git](https://github.com/seu-usuario/brain-tumor-detection-yolo.git)
+
 cd brain-tumor-detection-yolo
+
 pip install -r requirements.txt
+```
