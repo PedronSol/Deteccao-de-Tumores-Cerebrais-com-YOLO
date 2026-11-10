@@ -28,9 +28,9 @@ O diagnóstico precoce de tumores cerebrais exige precisão e agilidade. Este pr
 - Aplicação de rotação, *mosaic augmentation* e ajuste de brilho/contraste para mitigar *overfitting*.
 
 ### 2. Ajuste de Limiares (Custom Confidence Thresholds)
-Na detecção médica, a escolha do limiar de confiança ($\text{conf\_thres}$) é crítica:
-- **Alta Sensibilidade (Recall Elevado):** Redução do $\text{conf\_thres}$ para capturar lesões sutis ou em estágios iniciais, minimizando falsos negativos.
-- **Supressão de Não-Máximos (NMS):** Ajuste do IoU threshold ($\text{iou\_thres}$) para evitar caixa duplas sobre o mesmo tumor.
+Na detecção médica, a escolha do limiar de confiança é crítica:
+- **Alta Sensibilidade (Recall Elevado):** Redução do limiar de confiança para capturar lesões sutis ou em estágios iniciais, minimizando falsos negativos.
+- **Supressão de Não-Máximos (NMS):** Ajuste do IoU threshold para evitar caixa duplas sobre o mesmo tumor.
 
 ## Resultados e Métricas
 
@@ -41,22 +41,27 @@ Na detecção médica, a escolha do limiar de confiança ($\text{conf\_thres}$) 
 | **mAP@50** | 96.5% |
 | **mAP@50-95** | 78.4% |
 
-*(Adicione aqui a imagem da Matriz de Confusão e da Curva PR geradas pelo YOLO no diretório `runs/detect/train/`)*
+![Curvas de Erro para Score de Confiança de 50%](Curvas_de_Erro.png)
+
+![Matriz de Confusão para Score de Confiança de 50%](Matriz_de_Confusao.png)
 
 ## Como Executar
 
-### 1. Inicializar Ambiente Virtual
+### 1. Clonar o Repositório
+```bash
+git clone https://github.com/PedronSol/Deteccao-de-Tumores-Cerebrais-com-YOLO.git
+
+cd Deteccao-de-Tumores-Cerebrais-com-YOLO
+```
+
+### 2. Inicializar Ambiente Virtual
 ```bash
 python3 -m venv .venv
 
 source venv/bin/activate # No Windows: venv\Scripts\activate
 ```
 
-### 2. Clonar e Instalar Dependências
+### 3. Instalar Dependências
 ```bash
-git clone [https://github.com/seu-usuario/brain-tumor-detection-yolo.git](https://github.com/seu-usuario/brain-tumor-detection-yolo.git)
-
-cd brain-tumor-detection-yolo
-
 pip install -r requirements.txt
 ```
